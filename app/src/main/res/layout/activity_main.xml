@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="form guide json:"/>
+
+        <EditText
+            android:id="@+id/et_form_element"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="please input form guide json"/>
+
+        <EditText
+            android:id="@+id/et_form_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="please input form result"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_submit_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="generate edit form"/>
+
+            <Button
+                android:id="@+id/btn_submit_show"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="generate show form"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="form show:"/>
+
+        <LinearLayout
+            android:id="@+id/ll_form_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1000"
+            android:orientation="vertical"
+            tools:layout_height="10dp"/>
+
+        <Button
+            android:id="@+id/btn_submit_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="submit form"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="result show:"/>
+
+        <EditText
+            android:id="@+id/tv_result_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</ScrollView>
