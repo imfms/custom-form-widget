@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.imfms'
+
 android {
     compileSdkVersion 25
 
@@ -39,4 +42,31 @@ dependencies {
     implementation "com.github.imfms.java-library:check:${imfmsJavaLibrary}"
     implementation "com.github.imfms.java-library:collection_util:${imfmsJavaLibrary}"
     implementation "com.github.imfms.java-library:multivalues:${imfmsJavaLibrary}"
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError  false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
 }
