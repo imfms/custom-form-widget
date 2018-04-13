@@ -33,6 +33,7 @@ public abstract class BaseWidgetWriteWithShowBeanHandler<SHOW_DESC_TYPE> impleme
     private final Context mContext;
     protected SHOW_DESC_TYPE mShowDescBean;
     protected final Gson mGson;
+    private View mContentView;
 
     public BaseWidgetWriteWithShowBeanHandler(Activity activity, ViewGroup parent, Context context) {
 
@@ -52,7 +53,10 @@ public abstract class BaseWidgetWriteWithShowBeanHandler<SHOW_DESC_TYPE> impleme
 
     @Override
     public View getContentView() {
-        return generateView(mActivity, LayoutInflater.from(mActivity), mParent);
+        if (mContentView == null) {
+            mContentView = generateView(mActivity, LayoutInflater.from(mActivity), mParent);
+        }
+        return mContentView;
     }
 
     @Override
