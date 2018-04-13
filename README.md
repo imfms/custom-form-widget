@@ -8,6 +8,7 @@ doing...
   - change check method policy
     - only check myself? when fill?
     - check myself and my son? when check only?
+    - check showData and resultData when check result
   - add argument check exception on fill method
 
 - new feature
