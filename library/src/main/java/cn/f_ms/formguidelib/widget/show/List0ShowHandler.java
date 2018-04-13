@@ -15,13 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 import cn.f_ms.formguidelib.Context;
-import cn.f_ms.formguidelib.MultiWidgetHolder;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.entity.WidgetEntity;
-import cn.f_ms.formguidelib.widget.entity.List0ShowEntity;
 import cn.f_ms.library.check.CheckNull;
 import cn.f_ms.library.logic.IsRight;
+import cn.f_ms.formguidelib.widget.Container0Holder;
+import cn.f_ms.formguidelib.widget.entity.List0ShowEntity;
 
 /**
  * Desc: 列表控件, 容纳不定数量的一组控件
@@ -33,7 +33,7 @@ public class List0ShowHandler extends BaseWidgetShowWithShowOrResultBeanHandler<
 
     private LinearLayout llItemContainer;
 
-    private Map<View,MultiWidgetHolder> mCustomFormInfoMap = new LinkedHashMap<>();
+    private Map<View,Container0Holder> mCustomFormInfoMap = new LinkedHashMap<>();
     private List0ShowEntity mShowDescBean;
 
     public List0ShowHandler(Activity activity, ViewGroup parent, Context context) {
@@ -69,11 +69,11 @@ public class List0ShowHandler extends BaseWidgetShowWithShowOrResultBeanHandler<
             throw new IllegalArgumentException("resultDescBean can't contain null value, but found on '" + nullIndex + "'");
         }
 
-        MultiWidgetHolder customFormContainer;
+        Container0Holder customFormContainer;
         if (llItemContainer.getChildCount() > 0) {
             customFormContainer = mCustomFormInfoMap.get(llItemContainer.getChildAt(0));
         } else {
-            customFormContainer = new MultiWidgetHolder(mActivity, null, getContext());
+            customFormContainer = new Container0Holder(mActivity, null, getContext());
             customFormContainer.getContentView();
             customFormContainer.fillWidgetDesc(mShowDescBean.itemElements);
         }
@@ -95,9 +95,9 @@ public class List0ShowHandler extends BaseWidgetShowWithShowOrResultBeanHandler<
         addItem(resultDescBean.size(), mShowDescBean.itemElements);
 
         for (int i = 0; i < llItemContainer.getChildCount(); i++) {
-            MultiWidgetHolder multiWidgetHolder = mCustomFormInfoMap.get(llItemContainer.getChildAt(i));
+            Container0Holder customFormWidgetContainerHolder = mCustomFormInfoMap.get(llItemContainer.getChildAt(i));
             List<ResultEntity> resultEntities = resultDescBean.get(i);
-            multiWidgetHolder.fillResultData(resultEntities);
+            customFormWidgetContainerHolder.fillResultData(resultEntities);
         }
     }
 
@@ -134,7 +134,7 @@ public class List0ShowHandler extends BaseWidgetShowWithShowOrResultBeanHandler<
         TextView tvOrderNumber = (TextView) itemContainer.findViewById(R.id.tv_order_number);
         LinearLayout llCustomFormContainer = (LinearLayout) itemContainer.findViewById(R.id.ll_custom_form_container);
 
-        MultiWidgetHolder customFormContainer = new MultiWidgetHolder(mActivity, llCustomFormContainer, getContext());
+        Container0Holder customFormContainer = new Container0Holder(mActivity, llCustomFormContainer, getContext());
         llCustomFormContainer.addView(customFormContainer.getContentView());
 
         // 顺序

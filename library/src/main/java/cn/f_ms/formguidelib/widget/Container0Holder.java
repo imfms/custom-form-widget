@@ -1,4 +1,4 @@
-package cn.f_ms.formguidelib;
+package cn.f_ms.formguidelib.widget;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -14,29 +14,27 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.f_ms.formguidelib.Context;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.entity.WidgetEntity;
-import cn.f_ms.formguidelib.widget.NoConvertHolder;
-import cn.f_ms.formguidelib.widget.SingleWidgetHandler;
 import cn.f_ms.formguidelib.widget.write.BaseWidgetWriteWithShowOrResultBeanHandler;
-import cn.f_ms.library.check.CheckNull;
 import cn.f_ms.library.logic.IsRight;
 
 /**
- * 多容器控件,用于包装多个控件
+ * Desc: 容器控件，容纳一组控件
+ *
+ * @author f_ms
+ * @time 18-4-12
  */
-public class MultiWidgetHolder extends BaseWidgetWriteWithShowOrResultBeanHandler<List<WidgetEntity>, List<ResultEntity>> {
+public class Container0Holder extends BaseWidgetWriteWithShowOrResultBeanHandler<List<WidgetEntity>, List<ResultEntity>> {
+
 
     private final List<WidgetEntity> mDatas = new ArrayList<>();
     private final Map<WidgetEntity, SingleWidgetHandler> mWidgetEntityHandlerMap = new LinkedHashMap<>();
 
     private ViewGroup mContainView;
 
-    public MultiWidgetHolder(Activity activity, ViewGroup parent, FormMatcher formMatcher) {
-        super(activity, parent, makeContext(formMatcher));
-    }
-
-    public MultiWidgetHolder(Activity activity, ViewGroup parent, Context context) {
+    public Container0Holder(Activity activity, ViewGroup parent, Context context) {
         super(activity, parent, context);
     }
 
@@ -164,23 +162,5 @@ public class MultiWidgetHolder extends BaseWidgetWriteWithShowOrResultBeanHandle
         }
 
         return null;
-    }
-
-    private static Context makeContext(final FormMatcher formMatcher) {
-        CheckNull.ifNullThrowArgException(formMatcher, "formMatcher can't be null");
-
-        return new Context(
-                new FormMatcher(){
-
-                    @Override
-                    public FormHandler getConvertHolder(String type, int version, Activity activity, ViewGroup parent, Context context) {
-                        FormHandler convertHolder = formMatcher.getConvertHolder(type, version, activity, parent, context);
-                        if (convertHolder == null) {
-                            convertHolder = new NoConvertHolder(activity, parent, context);
-                        }
-                        return convertHolder;
-                    }
-                }
-        );
     }
 }

@@ -52,6 +52,12 @@ public class CommonShowFormMatcher implements FormHandler.FormMatcher {
                 return new SingleChoice0Handler(activity, parent, context);
             }
         },
+        CONTAINER0("container", 0) {
+            @Override
+            public FormHandler getConvertHolder(Activity activity, ViewGroup parent, Context context) {
+                return new Container0Holder(activity, parent, context);
+            }
+        },
         LIST0("list", 0) {
             @Override
             public FormHandler getConvertHolder(Activity activity, ViewGroup parent, Context context) {

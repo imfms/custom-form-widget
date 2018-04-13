@@ -21,9 +21,10 @@ import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.entity.WidgetEntity;
 import cn.f_ms.formguidelib.widget.entity.List0ShowEntity;
-import cn.f_ms.formguidelib.MultiWidgetHolder;
 import cn.f_ms.library.check.CheckNull;
 import cn.f_ms.library.logic.IsRight;
+import cn.f_ms.formguidelib.widget.Container0Holder;
+
 
 /**
  * Desc: 列表控件, 容纳不定数量的一组控件
@@ -80,11 +81,11 @@ public class List0WriteHandler extends BaseWidgetWriteWithShowOrResultBeanHandle
             throw new IllegalArgumentException("resultDescBean can't contain null value, but found on '" + nullIndex + "'");
         }
 
-        MultiWidgetHolder customFormContainer;
+        Container0Holder customFormContainer;
         if (llItemContainer.getChildCount() > 0) {
             customFormContainer = mCustomFormInfoMap.get(llItemContainer.getChildAt(0)).customFormContainer;
         } else {
-            customFormContainer = new MultiWidgetHolder(mActivity, null, getContext());
+            customFormContainer = new Container0Holder(mActivity, null, getContext());
             customFormContainer.getContentView();
             customFormContainer.fillWidgetDesc(mShowDescBean.itemElements);
         }
@@ -173,7 +174,7 @@ public class List0WriteHandler extends BaseWidgetWriteWithShowOrResultBeanHandle
         TextView tvOrderNumber = (TextView) itemContainer.findViewById(R.id.tv_order_number);
         LinearLayout llCustomFormContainer = (LinearLayout) itemContainer.findViewById(R.id.ll_custom_form_container);
 
-        MultiWidgetHolder customFormContainer = new MultiWidgetHolder(mActivity, llCustomFormContainer, getContext());
+        Container0Holder customFormContainer = new Container0Holder(mActivity, llCustomFormContainer, getContext());
         llCustomFormContainer.addView(customFormContainer.getContentView());
 
         // 顺序
@@ -230,12 +231,12 @@ public class List0WriteHandler extends BaseWidgetWriteWithShowOrResultBeanHandle
 
     private class ItemInfo {
 
-        public ItemInfo(MultiWidgetHolder customFormContainer, TextView tvOrderNumber) {
+        public ItemInfo(Container0Holder customFormContainer, TextView tvOrderNumber) {
             this.customFormContainer = customFormContainer;
             this.tvOrderNumber = tvOrderNumber;
         }
 
-        MultiWidgetHolder customFormContainer;
+        Container0Holder customFormContainer;
         TextView tvOrderNumber;
     }
 

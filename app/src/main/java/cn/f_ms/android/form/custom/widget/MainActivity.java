@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
-import cn.f_ms.formguidelib.MultiWidgetHolder;
+import cn.f_ms.formguidelib.CustomFormWidgetContainerHolder;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.entity.WidgetEntity;
 import cn.f_ms.formguidelib.widget.CommonShowFormMatcher;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSubmitForm;
     private EditText etFormResult;
 
-    private MultiWidgetHolder mFormGuideWriteHolder;
+    private CustomFormWidgetContainerHolder mFormGuideWriteHolder;
 
     private Gson mGson = new Gson();
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        MultiWidgetHolder.Result result = mFormGuideWriteHolder.getResult();
+        CustomFormWidgetContainerHolder.Result result = mFormGuideWriteHolder.getResult();
         if (!result.isSuccess) {
             showToast("form verify error:" + result.errorMessage);
             return;
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         tvResultShow.setText(null);
 
         try {
-            mFormGuideWriteHolder = new MultiWidgetHolder(this, llFormContainer,
+            mFormGuideWriteHolder = new CustomFormWidgetContainerHolder(this, llFormContainer,
                     isEdit
                             ? new CommonWriteFormMatcher()
                             : new CommonShowFormMatcher()
