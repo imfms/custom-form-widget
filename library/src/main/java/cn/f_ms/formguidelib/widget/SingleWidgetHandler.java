@@ -27,6 +27,16 @@ import cn.f_ms.library.logic.IsRight;
 
 public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHandler<WidgetEntity,ResultEntity> {
 
+    /**
+     * 自类型
+     */
+    public static class MyWidgetEntity extends WidgetEntity {
+
+        public MyWidgetEntity(String show_desc_data, String title) {
+            super(null, null, show_desc_data, null, title);
+        }
+    }
+
     private TextView tvTitle;
     private FrameLayout flItemContainer;
     private WidgetEntity mWidgetEntity;
@@ -54,7 +64,9 @@ public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHand
             return entityIsRight;
         }
 
-        return mConvertHolder.checkWidgetDescJson(descBean.show_desc_data);
+        return IsRight.yes();
+        // TODO: 18-4-13 bugfix: Will NPE? Maybe I have no mConvertHolder now.
+        // return mConvertHolder.checkWidgetDescJson(descBean.show_desc_data);
     }
 
     @Override
@@ -115,6 +127,12 @@ public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHand
     }
 
     private FormHandler getConvertHolder(final WidgetEntity guide, final ViewGroup containView) {
+
+        // 自类型
+        if (guide instanceof MyWidgetEntity) {
+            return new SingleWidgetHandler(mActivity, containView, getContext());
+        }
+
         return getContext().getConvertHolder(guide.type, guide.version, mActivity, containView);
     }
 }

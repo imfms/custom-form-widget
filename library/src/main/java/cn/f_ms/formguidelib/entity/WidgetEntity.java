@@ -26,15 +26,15 @@ public class WidgetEntity {
 
     public static IsRight checkIsRight(WidgetEntity widgetEntity) {
         if (widgetEntity.type == null) {
-            return IsRight.no("widgetEntity's type can't be null");
+            return IsRight.no("widgetEntityJson's type can't be null");
         }
 
         if (widgetEntity.version == null) {
-            return IsRight.no("widgetEntity's version can't be null");
+            return IsRight.no("widgetEntityJson's version can't be null");
         }
 
         if (widgetEntity.elementId == null) {
-            return IsRight.no("widgetEntity's elementId can't be null");
+            return IsRight.no("widgetEntityJson's elementId can't be null");
         }
 
         return IsRight.yes();

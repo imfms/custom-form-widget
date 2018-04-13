@@ -58,6 +58,12 @@ public class CommonWriteFormMatcher implements FormHandler.FormMatcher {
                 return new Container0Holder(activity, parent, context);
             }
         },
+        COMBINE_NAME_WITH_WIDGET("combine_name_with_widget", 0) {
+            @Override
+            public FormHandler getConvertHolder(Activity activity, ViewGroup parent, Context context) {
+                return new CombineNameWithWidget0Holder(activity, parent, context);
+            }
+        },
         LIST0("list", 0) {
             @Override
             public FormHandler getConvertHolder(Activity activity, ViewGroup parent, Context context) {
