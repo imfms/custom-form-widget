@@ -81,6 +81,11 @@ public class InputText0WriteHandler extends BaseWidgetWriteWithShowBeanHandler<I
                         return obtResult(false, InputText0Entity.ERROR_MESSAGE_CHECK_REGULAR_NUMBER_SIGNED, null);
                     }
                     break;
+                case InputText0Entity.INPUT_TYPE_NUMBER_DECIMAL_SIGNED:
+                    if (!etStr.matches(InputText0Entity.CHECK_REGULAR_NUMBER_DECIMAL_SIGNED)) {
+                        return obtResult(false, InputText0Entity.ERROR_MESSAGE_CHECK_REGULAR_NUMBER_DECIMAL_SIGNED, null);
+                    }
+                    break;
                 case InputText0Entity.INPUT_TYPE_TEXT_PASSWORD:
                 case InputText0Entity.INPUT_TYPE_TEXT:
                 default:
@@ -195,6 +200,9 @@ public class InputText0WriteHandler extends BaseWidgetWriteWithShowBeanHandler<I
                 break;
             case InputText0Entity.INPUT_TYPE_TEXT_PASSWORD:
                 inputType = InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD;
+                break;
+            case InputText0Entity.INPUT_TYPE_NUMBER_DECIMAL_SIGNED:
+                inputType = InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_SIGNED|InputType.TYPE_NUMBER_FLAG_DECIMAL;
                 break;
             case InputText0Entity.INPUT_TYPE_TEXT:
             default:

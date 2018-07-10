@@ -17,16 +17,19 @@ public class InputText0Entity {
     public static final String INPUT_TYPE_NUMBER_SIGNED = "number_signed";
     public static final String INPUT_TYPE_TEXT_PASSWORD = "text_password";
     public static final String INPUT_TYPE_NUMBER_PASSWORD = "number_password";
+    public static final String INPUT_TYPE_NUMBER_DECIMAL_SIGNED = "number_decimal_signed";
 
     public static final String CHECK_REGULAR_NUMBER = "^\\d+$";
     public static final String CHECK_REGULAR_NUMBER_DECIMAL = "^\\d+\\.{0,1}\\d{0,}$";
-    public static final String CHECK_REGULAR_NUMBER_SIGNED = "^-{0,1}\\d+$";
+    public static final String CHECK_REGULAR_NUMBER_SIGNED = "^[-\\+]{0,1}\\d+$";
     public static final String CHECK_REGULAR_NUMBER_PASSWORD = CHECK_REGULAR_NUMBER;
+    public static final String CHECK_REGULAR_NUMBER_DECIMAL_SIGNED = "^[-\\+]{0,1}\\d+\\.{0,1}\\d{0,}$";
 
     public static final String ERROR_MESSAGE_CHECK_REGULAR_NUMBER = "只能包含数字";
     public static final String ERROR_MESSAGE_CHECK_REGULAR_NUMBER_DECIMAL = "只能包含非负小数";
     public static final String ERROR_MESSAGE_CHECK_REGULAR_NUMBER_SIGNED = "只能包含整数";
     public static final String ERROR_MESSAGE_CHECK_REGULAR_NUMBER_PASSWORD = ERROR_MESSAGE_CHECK_REGULAR_NUMBER;
+    public static final String ERROR_MESSAGE_CHECK_REGULAR_NUMBER_DECIMAL_SIGNED = "只能包含小数";
 
     public static final String ERROR_MESSAGE_VERIFY_REGULAR_DEFAULT = "校验错误，请检查后重试";
 
