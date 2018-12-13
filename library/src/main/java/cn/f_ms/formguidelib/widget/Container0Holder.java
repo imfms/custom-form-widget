@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.entity.WidgetEntity;
 import cn.f_ms.formguidelib.widget.write.BaseWidgetWriteWithShowOrResultBeanHandler;
@@ -34,8 +34,8 @@ public class Container0Holder extends BaseWidgetWriteWithShowOrResultBeanHandler
 
     private ViewGroup mContainView;
 
-    public Container0Holder(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public Container0Holder(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.widget.entity.MultiChoice0Entity;
 import cn.f_ms.library.logic.IsRight;
@@ -25,8 +25,8 @@ public class MultiChoice0WriteHandler extends BaseWidgetWriteWithShowOrResultBea
 
     private LinearLayout llContainer;
 
-    public MultiChoice0WriteHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public MultiChoice0WriteHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

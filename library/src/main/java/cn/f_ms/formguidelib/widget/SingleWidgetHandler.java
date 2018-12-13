@@ -5,14 +5,13 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.lang.reflect.Type;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.FormHandler;
-import cn.f_ms.formguidelib.R;
+import cn.f_ms.formguidelib.ViewStructureBuilder;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.entity.WidgetEntity;
 import cn.f_ms.formguidelib.widget.write.BaseWidgetWriteWithShowOrResultBeanHandler;
@@ -25,7 +24,7 @@ import cn.f_ms.library.logic.IsRight;
  * @time 18-3-9
  */
 
-public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHandler<WidgetEntity,ResultEntity> {
+public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHandler<WidgetEntity, ResultEntity> {
 
     /**
      * 自类型
@@ -38,23 +37,22 @@ public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHand
     }
 
     private TextView tvTitle;
-    private FrameLayout flItemContainer;
+    private ViewGroup itemContainer;
     private WidgetEntity mWidgetEntity;
-
-    public SingleWidgetHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
-    }
-
     private FormHandler mConvertHolder;
+
+    public SingleWidgetHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
+    }
 
     @Override
     protected View generateView(Activity activity, LayoutInflater layoutInflater, ViewGroup parent) {
-        ViewGroup rootView = (ViewGroup) layoutInflater.inflate(R.layout.holder_form_single_widget_container, parent, false);
+        ViewStructureBuilder.ViewStructureWrapper viewStructureWrapper = getContext().getViewStructureBuilder().create(activity, parent);
 
-        tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
-        flItemContainer = (FrameLayout) rootView.findViewById(R.id.fl_item_container);
+        tvTitle = viewStructureWrapper.titleView();
+        itemContainer = viewStructureWrapper.contentContainer();
 
-        return rootView;
+        return viewStructureWrapper.rootView();
     }
 
     @Override
@@ -71,10 +69,10 @@ public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHand
 
     @Override
     public void fillWidgetDesc(WidgetEntity showDescBean) {
-        mConvertHolder = getConvertHolder(showDescBean, flItemContainer);
+        mConvertHolder = getConvertHolder(showDescBean, itemContainer);
         mWidgetEntity = showDescBean;
-        flItemContainer.removeAllViews();
-        flItemContainer.addView(mConvertHolder.getContentView());
+        itemContainer.removeAllViews();
+        itemContainer.addView(mConvertHolder.getContentView());
         mConvertHolder.fillWidgetDescJson(showDescBean.show_desc_data);
 
         if (showDescBean.title == null) {

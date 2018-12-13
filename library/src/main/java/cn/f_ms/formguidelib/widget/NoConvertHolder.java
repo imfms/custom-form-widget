@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.widget.write.BaseWidgetWriteWithShowOrResultBeanHandler;
 import cn.f_ms.library.logic.IsRight;
 
 public class NoConvertHolder extends BaseWidgetWriteWithShowOrResultBeanHandler {
 
-    public NoConvertHolder(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public NoConvertHolder(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

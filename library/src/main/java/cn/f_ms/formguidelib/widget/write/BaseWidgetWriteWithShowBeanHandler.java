@@ -14,7 +14,7 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.FormHandler;
 import cn.f_ms.library.check.CheckNull;
 import cn.f_ms.library.logic.IsRight;
@@ -30,16 +30,16 @@ public abstract class BaseWidgetWriteWithShowBeanHandler<SHOW_DESC_TYPE> impleme
     private ViewGroup mParent;
 
     protected final Activity mActivity;
-    private final Context mContext;
+    private final FormContext mFormContext;
     protected SHOW_DESC_TYPE mShowDescBean;
     protected final Gson mGson;
     private View mContentView;
 
-    public BaseWidgetWriteWithShowBeanHandler(Activity activity, ViewGroup parent, Context context) {
+    public BaseWidgetWriteWithShowBeanHandler(Activity activity, ViewGroup parent, FormContext formContext) {
 
         mParent = parent;
         mActivity = CheckNull.ifNullThrowArgException(activity);
-        mContext = CheckNull.ifNullThrowArgException(context);
+        mFormContext = CheckNull.ifNullThrowArgException(formContext);
 
         mGson = new GsonBuilder()
                 .registerTypeAdapter(Void.class, new JsonDeserializer<Void>() {
@@ -83,8 +83,8 @@ public abstract class BaseWidgetWriteWithShowBeanHandler<SHOW_DESC_TYPE> impleme
         fillWidgetDesc(mShowDescBean);
     }
 
-    protected final Context getContext() {
-        return mContext;
+    protected final FormContext getContext() {
+        return mFormContext;
     }
 
     protected abstract View generateView(Activity activity, LayoutInflater layoutInflater, ViewGroup parent);
