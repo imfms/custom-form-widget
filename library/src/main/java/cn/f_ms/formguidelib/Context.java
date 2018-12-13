@@ -18,9 +18,18 @@ public final class Context {
      * 自定义表单描述处理器
      */
     private final FormHandler.FormMatcher formMatcher;
+    /**
+     * 视图结构构建者
+     */
+    private final ViewStructureBuilder viewStructureBuilder;
 
-    public Context(FormHandler.FormMatcher formMatcher) {
-        this.formMatcher = CheckNull.ifNullThrowArgException(formMatcher);
+    public Context(ViewStructureBuilder viewStructureBuilder, FormHandler.FormMatcher formMatcher) {
+        this.viewStructureBuilder = CheckNull.ifNullThrowArgException(viewStructureBuilder, "viewStructureBuilder can't be null");
+        this.formMatcher = CheckNull.ifNullThrowArgException(formMatcher, "formMatcher can't be null");
+    }
+
+    public ViewStructureBuilder getViewStructureBuilder() {
+        return viewStructureBuilder;
     }
 
     public FormHandler getConvertHolder(String type, int version, Activity activity, ViewGroup parent) {
