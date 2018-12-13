@@ -12,7 +12,7 @@ import cn.f_ms.library.check.CheckNull;
  * @date 18-3-10
  */
 
-public final class Context {
+public final class FormContext {
 
     /**
      * 自定义表单描述处理器
@@ -23,7 +23,7 @@ public final class Context {
      */
     private final ViewStructureBuilder viewStructureBuilder;
 
-    public Context(ViewStructureBuilder viewStructureBuilder, FormHandler.FormMatcher formMatcher) {
+    public FormContext(ViewStructureBuilder viewStructureBuilder, FormHandler.FormMatcher formMatcher) {
         this.viewStructureBuilder = CheckNull.ifNullThrowArgException(viewStructureBuilder, "viewStructureBuilder can't be null");
         this.formMatcher = CheckNull.ifNullThrowArgException(formMatcher, "formMatcher can't be null");
     }

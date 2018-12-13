@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.widget.entity.DateSelect0Entity;
 import cn.f_ms.library.logic.IsRight;
@@ -25,8 +25,8 @@ public class DateSelect0WriteHandler extends BaseWidgetWriteWithShowOrResultBean
     private TextView tvDateDisplay;
     private long mSelectDate = -1;
 
-    public DateSelect0WriteHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public DateSelect0WriteHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

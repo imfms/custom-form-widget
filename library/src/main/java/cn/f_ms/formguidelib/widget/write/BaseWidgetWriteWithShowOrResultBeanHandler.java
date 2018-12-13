@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 
 import java.lang.reflect.Type;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.FormHandler;
 import cn.f_ms.library.logic.IsRight;
 
@@ -29,8 +29,8 @@ public abstract class BaseWidgetWriteWithShowOrResultBeanHandler<SHOW_DESC_TYPE,
         }
     }
 
-    public BaseWidgetWriteWithShowOrResultBeanHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public BaseWidgetWriteWithShowOrResultBeanHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

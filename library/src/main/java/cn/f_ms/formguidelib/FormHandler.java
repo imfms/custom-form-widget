@@ -62,9 +62,9 @@ public interface FormHandler {
          *
          * @param type    自定义控件类型
          * @param version 自定义控件版本
-         * @param context 自定义控件上下文
+         * @param formContext 自定义控件上下文
          * @return 自定义控件处理器
          */
-        FormHandler getConvertHolder(String type, int version, Activity activity, ViewGroup parent, Context context);
+        FormHandler getConvertHolder(String type, int version, Activity activity, ViewGroup parent, FormContext formContext);
     }
 }

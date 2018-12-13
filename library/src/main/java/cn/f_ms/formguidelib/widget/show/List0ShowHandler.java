@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.entity.WidgetEntity;
@@ -36,8 +36,8 @@ public class List0ShowHandler extends BaseWidgetShowWithShowOrResultBeanHandler<
     private Map<View,Container0Holder> mCustomFormInfoMap = new LinkedHashMap<>();
     private List0ShowEntity mShowDescBean;
 
-    public List0ShowHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public List0ShowHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

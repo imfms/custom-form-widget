@@ -3,7 +3,7 @@ package cn.f_ms.formguidelib.widget.show;
 import android.app.Activity;
 import android.view.ViewGroup;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.widget.write.BaseWidgetWriteWithShowOrResultBeanHandler;
 
 /**
@@ -13,8 +13,8 @@ import cn.f_ms.formguidelib.widget.write.BaseWidgetWriteWithShowOrResultBeanHand
  * @time 2017/5/23
  */
 public abstract class BaseWidgetShowWithShowOrResultBeanHandler<SHOW_DESC_TYPE, RESULT_TYPE> extends BaseWidgetWriteWithShowOrResultBeanHandler<SHOW_DESC_TYPE, RESULT_TYPE> {
-    public BaseWidgetShowWithShowOrResultBeanHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public BaseWidgetShowWithShowOrResultBeanHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

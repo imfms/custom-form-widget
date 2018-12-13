@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Type;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.FormHandler;
 import cn.f_ms.formguidelib.ViewStructureBuilder;
 import cn.f_ms.formguidelib.entity.ResultEntity;
@@ -41,8 +41,8 @@ public class SingleWidgetHandler extends BaseWidgetWriteWithShowOrResultBeanHand
     private WidgetEntity mWidgetEntity;
     private FormHandler mConvertHolder;
 
-    public SingleWidgetHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public SingleWidgetHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

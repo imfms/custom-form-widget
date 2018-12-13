@@ -62,19 +62,19 @@ public class CustomFormWidgetContainerHolder extends Container0Holder {
         super(activity, parent, makeContext(formMatcher, viewStructureBuilder));
     }
 
-    private static Context makeContext(final FormMatcher formMatcher, ViewStructureBuilder viewStructureBuilder) {
+    private static FormContext makeContext(final FormMatcher formMatcher, ViewStructureBuilder viewStructureBuilder) {
         CheckNull.ifNullThrowArgException(formMatcher, "formMatcher can't be null");
         CheckNull.ifNullThrowArgException(viewStructureBuilder, "viewStructureBuilder can't be null");
 
-        return new Context(
+        return new FormContext(
                 viewStructureBuilder,
                 new FormMatcher() {
 
                     @Override
-                    public FormHandler getConvertHolder(String type, int version, Activity activity, ViewGroup parent, Context context) {
-                        FormHandler convertHolder = formMatcher.getConvertHolder(type, version, activity, parent, context);
+                    public FormHandler getConvertHolder(String type, int version, Activity activity, ViewGroup parent, FormContext formContext) {
+                        FormHandler convertHolder = formMatcher.getConvertHolder(type, version, activity, parent, formContext);
                         if (convertHolder == null) {
-                            convertHolder = new NoConvertHolder(activity, parent, context);
+                            convertHolder = new NoConvertHolder(activity, parent, formContext);
                         }
                         return convertHolder;
                     }

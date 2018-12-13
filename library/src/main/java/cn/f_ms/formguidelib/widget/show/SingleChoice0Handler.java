@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.widget.entity.SingleChoice0Entity;
 import cn.f_ms.library.logic.IsRight;
@@ -16,8 +16,8 @@ public class SingleChoice0Handler extends BaseWidgetShowWithShowOrResultBeanHand
 
     private RadioGroup rgRadioGroup;
 
-    public SingleChoice0Handler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public SingleChoice0Handler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

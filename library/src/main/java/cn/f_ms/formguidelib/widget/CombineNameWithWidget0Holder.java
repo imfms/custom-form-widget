@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.entity.ResultEntity;
 import cn.f_ms.formguidelib.widget.entity.CombineNameWithWidget0Entity;
 import cn.f_ms.formguidelib.widget.write.BaseWidgetWriteWithShowOrResultBeanHandler;
@@ -33,8 +33,8 @@ public class CombineNameWithWidget0Holder extends BaseWidgetWriteWithShowOrResul
     private List<SingleWidgetHandler> mWidgetHandlerList = new ArrayList<>();
     private String[] mNames;
 
-    public CombineNameWithWidget0Holder(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public CombineNameWithWidget0Holder(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

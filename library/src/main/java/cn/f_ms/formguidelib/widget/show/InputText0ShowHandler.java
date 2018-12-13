@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.widget.entity.InputText0Entity;
 import cn.f_ms.library.logic.IsRight;
@@ -15,8 +15,8 @@ public class InputText0ShowHandler extends BaseWidgetShowWithShowBeanHandler<Inp
 
     private TextView tvText;
 
-    public InputText0ShowHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public InputText0ShowHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override

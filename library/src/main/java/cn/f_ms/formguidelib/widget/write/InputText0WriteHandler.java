@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import cn.f_ms.formguidelib.Context;
+import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.FormHandler;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.widget.entity.InputText0Entity;
@@ -20,8 +20,8 @@ public class InputText0WriteHandler extends BaseWidgetWriteWithShowBeanHandler<I
 
     private EditText etEditText;
 
-    public InputText0WriteHandler(Activity activity, ViewGroup parent, Context context) {
-        super(activity, parent, context);
+    public InputText0WriteHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        super(activity, parent, formContext);
     }
 
     @Override
