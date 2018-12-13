@@ -1,6 +1,7 @@
 package cn.f_ms.formguidelib.widget.write;
 
 import android.app.Activity;
+import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -14,23 +15,82 @@ import cn.f_ms.formguidelib.FormContext;
 import cn.f_ms.formguidelib.FormHandler;
 import cn.f_ms.formguidelib.R;
 import cn.f_ms.formguidelib.widget.entity.InputText0Entity;
+import cn.f_ms.library.check.CheckNull;
 import cn.f_ms.library.logic.IsRight;
 
 public class InputText0WriteHandler extends BaseWidgetWriteWithShowBeanHandler<InputText0Entity> {
 
+    private final ViewStructureBuilder viewStructureBuilder;
+
+    /**
+     * 视图建造者
+     * @author f_ms
+     */
+    public interface ViewStructureBuilder {
+
+        /**
+         * 建造视图包装器
+         */
+        ViewStructureWrapper create(Context context, ViewGroup parent);
+
+        /**
+         * 视图结构包装器
+         */
+        interface ViewStructureWrapper {
+            /**
+             * 根视图
+             */
+            View rootView();
+
+            /**
+             * EditText view
+             */
+            EditText editTextView();
+        }
+    }
+
     private EditText etEditText;
 
     public InputText0WriteHandler(Activity activity, ViewGroup parent, FormContext formContext) {
+        this(activity, parent, formContext, new ViewStructureBuilder() {
+            @Override
+            public ViewStructureWrapper create(final Context context, final ViewGroup parent) {
+                return new ViewStructureWrapper() {
+
+                    private View rootView;
+                    private EditText etEditText;
+
+                    {
+                        rootView = LayoutInflater.from(context).inflate(R.layout.holder_write_input_text_0, parent, false);
+                        etEditText = (EditText) rootView.findViewById(R.id.et_edit_text);
+                    }
+
+                    @Override
+                    public View rootView() {
+                        return rootView;
+                    }
+
+                    @Override
+                    public EditText editTextView() {
+                        return etEditText;
+                    }
+                };
+            }
+        });
+    }
+    public InputText0WriteHandler(Activity activity, ViewGroup parent, FormContext formContext, ViewStructureBuilder viewStructureBuilder) {
         super(activity, parent, formContext);
+        this.viewStructureBuilder = CheckNull.ifNullThrowArgException(viewStructureBuilder, "viewStructureBuilder can't be null");
     }
 
     @Override
     protected View generateView(Activity mActivity, LayoutInflater layoutInflater, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.holder_write_input_text_0, parent, false);
 
-        etEditText = (EditText) view.findViewById(R.id.et_edit_text);
+        ViewStructureBuilder.ViewStructureWrapper viewStructureWrapper = viewStructureBuilder.create(mActivity, parent);
 
-        return view;
+        etEditText = viewStructureWrapper.editTextView();
+
+        return viewStructureWrapper.rootView();
     }
 
     @Override
