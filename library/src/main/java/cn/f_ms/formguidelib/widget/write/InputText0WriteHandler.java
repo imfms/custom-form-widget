@@ -294,6 +294,7 @@ public class InputText0WriteHandler extends BaseWidgetWriteWithShowBeanHandler<I
 
         if (maxLines == 1) {
             etEditText.setSingleLine();
+            return;
         }
 
         etEditText.addTextChangedListener(new TextWatcher() {
@@ -311,29 +312,25 @@ public class InputText0WriteHandler extends BaseWidgetWriteWithShowBeanHandler<I
             @Override
             public void afterTextChanged(Editable s) {
 
-
                 if (isCode) {
                     isCode = false;
                     return;
                 }
 
-                StringBuilder resultStr = handleStrMoreNumCharReplace(s.toString(), maxLines, '\n', ' ');
-
-                isCode = true;
-                etEditText.setText(resultStr);
-                etEditText.setSelection(resultStr.length());
+                StringBuilder result = new StringBuilder();
+                if (handleStrMoreNumCharReplace(s.toString(), result, maxLines, '\n', ' ')) {
+                    isCode = true;
+                    etEditText.setText(result);
+                    etEditText.setSelection(result.length());
+                }
             }
-
-
         });
 
     }
 
-    private static StringBuilder handleStrMoreNumCharReplace(String sourceStr, int moreNum, char beforeReplace, char afterReplace) {
+    private static boolean handleStrMoreNumCharReplace(String sourceStr, StringBuilder result, int moreNum, char beforeReplace, char afterReplace) {
 
         moreNum--;
-
-        StringBuilder sb = new StringBuilder();
 
         int count = 0;
 
@@ -341,22 +338,21 @@ public class InputText0WriteHandler extends BaseWidgetWriteWithShowBeanHandler<I
         int lastIndex = 0;
 
         while ((resultIndex = sourceStr.indexOf(beforeReplace, lastIndex)) != -1) {
-
             count++;
 
-            sb.append(sourceStr, lastIndex, resultIndex);
+            result.append(sourceStr, lastIndex, resultIndex);
 
             lastIndex = resultIndex + 1;
 
             if (count > moreNum) {
-                sb.append(afterReplace);
+                result.append(afterReplace);
             } else {
-                sb.append(beforeReplace);
+                result.append(beforeReplace);
             }
         }
 
-        sb.append(sourceStr, lastIndex, sourceStr.length());
+        result.append(sourceStr, lastIndex, sourceStr.length());
 
-        return sb;
+        return count > moreNum;
     }
 }
